@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import GetImages from "./GetImages"
-import Profile from "./Profile"
+import GetRecipes from "./GetRecipes"
+import RecipeDetail from "./RecipeDetail";
 
 export default function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<GetImages />}></Route>
-          <Route path="/:username" element={<Profile />}></Route>
+          <Route path="/" element={<GetRecipes />}></Route>
+          <Route path="/test" element={<RecipeDetail />}></Route>
         </Routes>
       </BrowserRouter>
     </>
