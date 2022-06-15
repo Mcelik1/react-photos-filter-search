@@ -28,7 +28,7 @@ export default function GetRecipes() {
     //fetch recipes using  search query
     const fetchRecipes = async (event) => {
         console.log('fetch recipes');
-        if (event.key === 'Enter') {
+
             console.log('search value', searchValue);
             const response = await fetch(
                 `https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&number=20&apiKey=${API_KEY}&addRecipeInformation=true&fillIngredients=true`
@@ -36,7 +36,7 @@ export default function GetRecipes() {
             const data = await response.json()
             console.log(data);
             setRecipes(data.results);
-        }
+
 
     }
 
@@ -63,22 +63,35 @@ export default function GetRecipes() {
     return (
         <>
             <div className="container mx-auto px-5 2xl:px-0">
+
                 <h1 className="text-slate-800 font-bold text-3xl md:text-4xl lg:text-6xl my-10 lg:mt-20 lg:mb-14">
                     Recipe Search
                 </h1>
 
-                <label htmlFor="search">Search Recipe by Keyword</label>
-                <input
-                    className="shadow mt-4 mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    type="text"
-                    name="search"
-                    placeholder="Search Here By Keyword"
-                    value={searchValue}
-                    onChange={event => {
-                        setSearchValue(event.target.value)
-                    }}
-                    onKeyDown={fetchRecipes}
-                />
+                <div className="search-wrapper">
+                    <div className="input">
+                        <input
+                            className="shadow mt-4 mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            type="text"
+                            name="search"
+                            placeholder="Search Here By Keyword"
+                            value={searchValue}
+                            onChange={event => {
+                                setSearchValue(event.target.value)
+                            }}
+                        />
+                    </div>
+
+                    <button
+                        className="bg-blue-500 mb-4 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                        onClick={fetchRecipes}>
+                        Search
+                    </button>
+
+                </div>
+
+
+
 
                 <p className="mb-2">Or select from any of the cuisines below</p>
                 <button

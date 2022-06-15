@@ -3,4 +3,10 @@ h2{
   font-weight:bold;
 }
 
-
+.search-wrapper{
+  display: flex;
+  .input{
+    width: 30%;
+    margin-right: 2.4rem;
+  }
+}
